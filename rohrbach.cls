@@ -1,29 +1,8 @@
-%%%%%%%%%%%%%%%%%
-% This is altacv.cls (v1.2, 11 February 2020) written by
-% LianTze Lim (liantze@gmail.com).
-%
-%% It may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%    http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2003/12/01 or later.
-%%
-%%
-% Contributions:
-% - https://github.com/akreuzer Added ragged2e option (5 Nov 2018)
-% - https://github.com/stefanogermano Fixed bad boxes and undefined font shape (July 2018)
-% - https://github.com/foohyfooh Fixed blank spaces in \cvevent and bad link in README.md (June 2018)
-
-%%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{altacv}[2020/02/11 AltaCV v1.2, yet another alternative class for a resume/curriculum vitae.]
+\ProvidesClass{rohrbachresume}[2020/02/11 rohrbachresume.]
 
-%% v1.1: Optionally load academicons
 \newif\if@academicons
 \DeclareOption{academicons}{\@academiconstrue}
-%% v1.1.3: Choice of round/square photo
 \newif\if@normalphoto
 \DeclareOption{normalphoto}{\@normalphototrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
@@ -39,7 +18,6 @@
 \RequirePackage{scrlfile}
 \usepackage{hyperref}
 
-%% v1.1.5: added for convenience
 \newif\ifxetexorluatex
 \ifxetex
   \xetexorluatextrue
@@ -51,8 +29,6 @@
   \fi
 \fi
 
-%% v1.1: Optionally load academicons
-%% v1.1.5: Handle different versions of academicons
 \if@academicons
   \ifxetexorluatex
     \RequirePackage{fontspec}
@@ -74,9 +50,7 @@
           \newfontfamily{\AI}{academicons.ttf}
         }
       }{% TL2016 requires the package to be loaded before
-        % the version can be checked. Only added because
-        % Overleaf v1 still runs TL2016; will be removed
-        % when v1 is completely retired.
+        % the version can be checked
           \let\ori@newfontfamily\newfontfamily%
           \renewcommand{\newfontfamily}[2]{}
           \RequirePackage{academicons}
@@ -85,7 +59,7 @@
       }
     }
   \else
-    \ClassError{AltaCV}{academicons unsupported by latex or pdflatex. Please compile with xelatex or lualatex}{Please compile with xelatex or lualatex to use the academicons option}
+    \ClassError{rohrbachresume}{academicons unsupported by latex or pdflatex. Please compile with xelatex or lualatex}{Please compile with xelatex or lualatex to use the academicons option}
   \fi
 \fi
 
@@ -147,11 +121,11 @@
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 
 % v1.2: Support for multiple photos
-\newlength{\altacv@photos@width}
-\newlength{\altacv@photo@diam@left}
-\newlength{\altacv@photo@diam@right}
-\def\altacv@left@photos{}
-\def\altacv@right@photos{}
+\newlength{\rohrbachresume@photos@width}
+\newlength{\rohrbachresume@photo@diam@left}
+\newlength{\rohrbachresume@photo@diam@right}
+\def\rohrbachresume@left@photos{}
+\def\rohrbachresume@right@photos{}
 
 \newcommand{\@makeaphoto}[2]{%
   \begin{minipage}{#1}%
@@ -163,34 +137,34 @@
   \end{minipage}%
 }
 
-\newcommand{\altacv@add@photo@left}[1]{%
-  \appto{\altacv@left@photos}{%
-    \@makeaphoto{\altacv@photo@diam@left}{#1}\hspace{1ex}%
+\newcommand{\rohrbachresume@add@photo@left}[1]{%
+  \appto{\rohrbachresume@left@photos}{%
+    \@makeaphoto{\rohrbachresume@photo@diam@left}{#1}\hspace{1ex}%
   }%
-  \addtolength{\altacv@photos@width}{\altacv@photo@diam@left}%
-  \addtolength{\altacv@photos@width}{1ex}%
+  \addtolength{\rohrbachresume@photos@width}{\rohrbachresume@photo@diam@left}%
+  \addtolength{\rohrbachresume@photos@width}{1ex}%
 }
-\newcommand{\altacv@add@photo@right}[1]{%
-  \appto{\altacv@right@photos}{%
-    \@makeaphoto{\altacv@photo@diam@right}{#1}\hspace{1ex}%
+\newcommand{\rohrbachresume@add@photo@right}[1]{%
+  \appto{\rohrbachresume@right@photos}{%
+    \@makeaphoto{\rohrbachresume@photo@diam@right}{#1}\hspace{1ex}%
   }%
-  \addtolength{\altacv@photos@width}{\altacv@photo@diam@right}%
-  \addtolength{\altacv@photos@width}{1ex}%
+  \addtolength{\rohrbachresume@photos@width}{\rohrbachresume@photo@diam@right}%
+  \addtolength{\rohrbachresume@photos@width}{1ex}%
 }
 \newcommand{\photoL}[2]{%
-  \setlength{\altacv@photo@diam@left}{#1}%
-  \forcsvlist{\altacv@add@photo@left}{#2}%
+  \setlength{\rohrbachresume@photo@diam@left}{#1}%
+  \forcsvlist{\rohrbachresume@add@photo@left}{#2}%
 }
 \newcommand{\photoR}[2]{%
-  \setlength{\altacv@photo@diam@right}{#1}%
-  \forcsvlist{\altacv@add@photo@right}{#2}%
+  \setlength{\rohrbachresume@photo@diam@right}{#1}%
+  \forcsvlist{\rohrbachresume@add@photo@right}{#2}%
 }
 \let\photo\photoR
 
 \newcommand{\makecvheader}{%
   \begingroup
-    \altacv@left@photos\hfill%
-    \begin{minipage}{\dimexpr\linewidth-\altacv@photos@width}%
+    \rohrbachresume@left@photos\hfill%
+    \begin{minipage}{\dimexpr\linewidth-\rohrbachresume@photos@width}%
     \raggedright\color{emphasis}%
     {\Huge\bfseries\MakeUppercase{\@name}\par}
     \medskip
@@ -198,7 +172,7 @@
     \medskip
     {\footnotesize\bfseries\@personalinfo\par}
     \end{minipage}\hfill%
-    \altacv@right@photos\par%
+    \rohrbachresume@right@photos\par%
   \endgroup\medskip
 }
 
