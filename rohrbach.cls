@@ -1,5 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{rohrbachresume}[2020/02/11 rohrbachresume.]
+% \ProvidesClass{rohrbachresume}[2020/02/11 rohrbachresume.]
+\ProvidesClass{rohrbach}[2020/02/11 rohrbach.]
 
 \newif\if@academicons
 \DeclareOption{academicons}{\@academiconstrue}
