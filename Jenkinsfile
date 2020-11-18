@@ -4,7 +4,7 @@ pipeline {
       stage('Build') {
         agent {
             docker {
-               image 'blang/latex:ubuntu'
+               image 'blang/latex:ctanfull'
             }
          }
         steps {
