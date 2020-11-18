@@ -7,15 +7,15 @@
 
 % Change the font if you want to, depending on whether
 % you're using pdflatex or xelatex/lualatex
-\ifxetexorluatex
+% \ifxetexorluatex
   % If using xelatex or lualatex:
-  \setmainfont{Helvetica}
-\else
+  % \setmainfont{Helvetica}
+% \else
   % If using pdflatex:
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
-  \usepackage[default]{lato}
-\fi
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+% \fi
 
 % Colors
 \definecolor{LightBlue}{HTML}{5090CE}
@@ -33,17 +33,17 @@
 
 \begin{document}
 \name{Zachary Rohrbach}
-\tagline{Cyber Security Engineer}
+\tagline{Security Engineer}
 %% You can add multiple photos on the left or right
 \photoR{2.8cm}{headshot-square-small}
 \personalinfo{%
   \mailaddress{\href{mailto:zachary@rohrbach.tech}{zachary@rohrbach.tech}}
   % \phone{508-954-3696}
-  \location{\href{https://goo.gl/maps/Loy98C3WRGFZGhtC9}{North Reading, MA}}
+  \location{\href{https://goo.gl/maps/bSZmU23okPiGhCCq7}{Cambridge, MA}}
   \homepage{\href{https://rohrbach.tech}{rohrbach.tech}}
   \linkedin{\href{https://www.linkedin.com/in/zchryr/}{linkedin.com/in/zchryr}}
   \github{\href{https://git.rohrbach.tech/zachary/}{git.rohrbach.tech/zachary}}
-  \github{\href{https://dev.azure.com/zacharyr/prospero}{dev.azure.com/zacharyr/prospero}}
+  % \github{\href{https://dev.azure.com/zacharyr/prospero}{dev.azure.com/zacharyr/prospero}}
   %% You MUST add the academicons option to \documentclass
 }
 
@@ -57,7 +57,20 @@
 \begin{paracol}{2}
 \cvsection{Experience}
 
-\cvevent{Senior DevSecOps Engineer}{\homepage{\href{https://www.netnumber.com/}{NetNumber}}}{05/2020 -- Ongoing}{\href{https://goo.gl/maps/HgQYqRwrYCSFVUn27}{Lowell, MA}}
+\cvevent{Cloud Security Engineer II}{\homepage{\href{https://quickbase.com/}{Quickbase}}}{05/2020 -- Ongoing}{\href{https://goo.gl/maps/aCPEFcHbfTTZFR7z9}{Cambridge, MA}}
+\begin{itemize}
+  \item Creating / maintaining security $\rightarrow$ development vulnerability\\ management program.
+  \item Building SAST / SCA / DAST / IaS / testing within our CI / CD processes.
+  \item Shifting left our security testing.
+  \item Engineering and monitoring cloud & colo infrastructure security.
+  \item Working with Product Development to further secure our\\ platform through feature releases & code refactoring / re-architecture.
+  \item Monitoring centralized logging server for security events.
+  \item Building developer security training program.
+\end{itemize}
+
+\divider
+
+\cvevent{Senior DevSecOps Engineer}{\homepage{\href{https://www.netnumber.com/}{NetNumber}}}{05/2020 -- 09/2020}{\href{https://goo.gl/maps/HgQYqRwrYCSFVUn27}{Lowell, MA}}
 \begin{itemize}
   \item Developing a security testing environment, from the ground up.
   \item Gathered a understanding of the development environment, product stack, code base, and identified where security needs to be put in place.
@@ -74,10 +87,10 @@
 \item Worked within CI/CD pipeline, to assist in securing a constant \break delivery of cloud software to managed environments.
 \item Managed the cyber security process for the development teams. This involved completing penetration tests, working on threat models with the developers / architects, and completing\\ required SDL documentation. 
 \item Worked directly with the development teams to help with\\ DevOps work, and integrating security into the development\\ process.
-\item Created a security CI/CD pipeline. This pipeline deployed Azure infrastructure, deployed several projects, ran automated security testing / auditing, and tore everything down. This pipeline worked as a cyber security regression testing suite.
+\item Created a security CI/CD pipeline. This pipeline deployed Azure infrastructure, deployed several projects, ran security testing \& auditing, finally tearing everything down. This pipeline worked as a cyber security regression testing suite.
 \end{itemize}
 
-\divider
+% \divider
 
 % \cvevent{Cyber Security Consultant}{\homepage{\href{https://steelroot.us/}{Steel Root}}}{04/2015 -- 04/2020}{\href{https://goo.gl/maps/9jJWQ5CidvE6vshz9}{Salem, MA}}
 % \begin{itemize}
@@ -104,23 +117,27 @@
 \cvsection{Strengths}
 
 \cvtag{Eye For Detail}
-\cvtag{Pentesting}
 \cvtag{CI/CD}
-\cvtag{DevOps}
+\cvtag{DevOps}\\
 \cvtag{DevSecOps}
 \cvtag{Docker}
-\cvtag{SDL}
-\cvtag{Programming}
-\cvtag{Security Automation}
+\cvtag{Pentesting}\\
+\cvtag{Security Tooling / Automation}
 \cvtag{Scripting}
 \cvtag{Threat Modeling}
-\cvtag{IoT}\\
+\cvtag{IoT}
+\cvtag{Programming}
 \cvtag{Azure / Azure DevOps}
-\cvtag{ISO27001}\\
+\cvtag{AWS}
+\cvtag{SDL}\\
 \cvtag{Linux Administration}
 \cvtag{Code Review}
 \cvtag{SAST / SCA / DAST}
+\cvtag{ISO27001}\\
+\cvtag{Security Operations}
 \cvtag{Jenkins}
+\cvtag{ShiftLeft}\\
+\cvtag{Vulnerability Program Management}
 
 \divider\smallskip
 
@@ -130,7 +147,7 @@
 \cvtag{C++}
 \cvtag{C\#}
 \cvtag{NodeJS}
-\cvtag{Java (Android)}
+\cvtag{Java}
 
 \cvsection{Security Tools}
 
@@ -141,7 +158,12 @@
 \cvtag{Airmon Suite}
 \cvtag{Exploit Frameworks}\\
 \cvtag{Metasploit}
-\cvtag{Enumeration Tools}
+\cvtag{Enumeration Tools}\\
+\cvtag{GitHub Advanced Security}
+\cvtag{Twistlock}\\
+\cvtag{Snyk}
+\cvtag{WhiteSource}
+\cvtag{Veracode}
 
 \cvsection{Achievements}
 
@@ -162,9 +184,11 @@
 \cvtag{Home Automation}
 \cvtag{3D Printing}
 
+\pagebreak
+
 \cvsection{Education}
 
-\cvevent{B.S. -- Computer Science}{\href{https://www.endicott.edu/}{Endicott College}}{August 2013 -- May 2020}{}
+\cvevent{B.S. -- Computer Science}{\href{https://www.endicott.edu/}{Endicott College}}{August 2013 -- Ongoing}{}
 \homepage{\href{https://dev.azure.com/zacharyr/prospero}{Thesis: Prospero}}\\
 CCTV replication \& notification system, build with automation, Docker, NodeJS, and\\ Microsoft Azure Cloud resources.
 
