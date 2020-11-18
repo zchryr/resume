@@ -8,7 +8,7 @@ pipeline {
             }
          }
         steps {
-            sh 'pdflatex -interaction nonstopmode main.tex'
+            sh 'xelatex main.tex'
         }
       }
    }
