@@ -15,8 +15,15 @@ pipeline {
 
    post {
       always {
-         cleanWs()
-         deleteDir()
-      }
+         cleanWs{
+            cleanWhenAborted(true)
+            cleanWhenFailure(true)
+            cleanWhenNotBuilt(false)
+            cleanWhenSuccess(true)
+            cleanWhenUnstable(true)
+            deleteDirs(true)
+            notFailBuild(true)
+            disableDeferredWipeout(true)
+         }
    }    
 }
