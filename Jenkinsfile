@@ -4,12 +4,10 @@ pipeline {
       stage('Build') {
         agent {
             docker {
-               image 'blang/latex:ubuntu'
-               args '-u root'
+               image 'blang/latex:ctanfull'
             }
          }
          steps {
-            sh 'apt update; apt install fonts-font-awesome'
             sh 'pdflatex main.tex'
          }
       }
@@ -17,10 +15,6 @@ pipeline {
 
    post {
       always {
-         cleanWs()
-         deleteDir()
-      }
-      cleanup{
          cleanWs()
          deleteDir()
       }
