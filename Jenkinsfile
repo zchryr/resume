@@ -5,10 +5,11 @@ pipeline {
         agent {
             docker {
                image 'blang/latex:ubuntu'
+               args '-u root'
             }
          }
          steps {
-            sh 'sudo apt update; sudo apt install fonts-font-awesome'
+            sh 'apt update; apt install fonts-font-awesome'
             sh 'pdflatex main.tex'
          }
       }
