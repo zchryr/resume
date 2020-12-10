@@ -8,7 +8,7 @@ pipeline {
             }
          }
          steps {
-            sh 'whoami'
+            sh 'sudo apt update; sudo apt install fonts-font-awesome'
             sh 'pdflatex main.tex'
          }
       }
