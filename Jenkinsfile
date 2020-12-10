@@ -7,9 +7,12 @@ pipeline {
                image 'blang/latex:ubuntu'
             }
          }
-        steps {
+         steps {
+            sh 'apt update; apt install fonts-font-awesome -y'
+         }
+         steps {
             sh 'pdflatex main.tex'
-        }
+         }
       }
    }
 
