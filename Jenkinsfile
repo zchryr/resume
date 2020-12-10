@@ -19,5 +19,9 @@ pipeline {
          cleanWs()
          deleteDir()
       }
+      cleanup{
+         cleanWs()
+         deleteDir()
+      }
    }    
 }
