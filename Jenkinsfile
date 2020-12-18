@@ -20,7 +20,7 @@ pipeline {
         agent {
             docker {
                image 'blang/latex:ctanfull'
-               args '-v $HOME:/data'
+               args '-v $HOME:/data --user="$(id -u):$(id -g)"'
             }
          }
          steps {
