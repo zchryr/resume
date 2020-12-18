@@ -26,11 +26,6 @@ pipeline {
             }
          }
       }
-      stage('File Cleanup') {
-         steps {
-            sh "ls -al"
-         }
-      }
       stage('Install Python Packages') {
          steps {
             sh "pip3 install -r ./scripts/requirements.txt"
