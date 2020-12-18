@@ -48,4 +48,4 @@ def createRelease():
 if args.release == "true":
     createRelease()
 else:
-    print("No Gitea release was created..")
+    print("No Gitea release was created.")
