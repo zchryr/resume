@@ -24,6 +24,7 @@ pipeline {
          }
          steps {
             sh 'pdflatex main.tex'
+            sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
          }
       }
       stage('Install Python Packages') {
