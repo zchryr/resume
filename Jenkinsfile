@@ -25,17 +25,6 @@ pipeline {
                }
             }
          }
-      //   agent {
-      //       docker {
-      //          image 'blang/latex:ctanfull'
-      //          args '-v $HOME:/data'
-      //       }
-      //    }
-      //    steps {
-      //       sh 'pdflatex main.tex'
-      //       sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
-      //       sh 'ls -al'
-      //    }
       }
       stage('File Cleanup') {
          steps {
