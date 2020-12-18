@@ -17,17 +17,25 @@ pipeline {
 
    stages {
       stage('Build LaTeX Resume') {
-        agent {
-            docker {
-               image 'blang/latex:ctanfull'
-               args '-v $HOME:/data'
+         steps {
+            script {
+               docker.image('blang/latex:ctanfull').inside {
+                  sh 'pdflatex main.tex'
+                  sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
+               }
             }
          }
-         steps {
-            sh 'pdflatex main.tex'
-            sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
-            sh 'ls -al'
-         }
+      //   agent {
+      //       docker {
+      //          image 'blang/latex:ctanfull'
+      //          args '-v $HOME:/data'
+      //       }
+      //    }
+      //    steps {
+      //       sh 'pdflatex main.tex'
+      //       sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
+      //       sh 'ls -al'
+      //    }
       }
       stage('File Cleanup') {
          steps {
