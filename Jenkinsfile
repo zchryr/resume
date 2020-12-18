@@ -28,17 +28,17 @@ pipeline {
       }
       stage('Install Python Packages') {
          steps {
-            sh "pip3 install -r requirements.txt"
+            sh "pip3 install -r ./scripts/requirements.txt"
          }
       }
       stage('Create Gitea Release'){
          steps {
-            sh "python3 gitea-release.py -release ${params.release}"
+            sh "python3 ./scripts/gitea-release.py -release ${params.release}"
          }
       }
       stage('Upload To S3'){
          steps {
-            sh "python3 upload-to-s3.py -upload ${params.upload}"
+            sh "python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
          }
       }
    }
