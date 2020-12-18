@@ -16,7 +16,7 @@ pipeline {
    }
 
    stages {
-      stage('Build') {
+      stage('Build LaTeX Resume') {
         agent {
             docker {
                image 'blang/latex:ctanfull'
