@@ -28,7 +28,8 @@ pipeline {
       }
       stage('File Cleanup') {
          steps {
-            sh "mv main.pdf Zachary-Rohrbach-Resume.pdf"
+            sh "ls -al"
+            // sh "mv main.pdf Zachary-Rohrbach-Resume.pdf"
          }
       }
       stage('Install Python Packages') {
