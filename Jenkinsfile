@@ -25,11 +25,12 @@ pipeline {
          }
          steps {
             sh 'pdflatex main.tex'
+            sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
          }
       }
       stage('File Cleanup') {
          steps {
-            sh "mv main.pdf Zachary-Rohrbach-Resume.pdf"
+            sh "ls -al"
          }
       }
       stage('Install Python Packages') {
