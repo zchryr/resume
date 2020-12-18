@@ -20,6 +20,7 @@ pipeline {
         agent {
             docker {
                image 'blang/latex:ctanfull'
+               args '-v $(pwd):/data'
             }
          }
          steps {
