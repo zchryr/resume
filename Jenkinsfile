@@ -26,17 +26,23 @@ pipeline {
             }
          }
       }
-      stage('Install Python Packages') {
-         steps {
-            sh "pip3 install -r ./scripts/requirements.txt"
-         }
-      }
+      // stage('Install Python Packages') {
+      //    steps {
+      //       sh "pip3 install -r ./scripts/requirements.txt"
+      //    }
+      // }
       stage('Create Gitea Release'){
+         agent {
+            docker { image 'python:latest'}
+         }
          steps {
             sh "python3 ./scripts/gitea-release.py -release ${params.release}"
          }
       }
       stage('Upload To S3'){
+         agent {
+            docker { image 'python:latest'}
+         }
          steps {
             sh "python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
          }
