@@ -36,7 +36,7 @@ pipeline {
             docker { image 'python:3-alpine'}
          }
          steps {
-            sh "pip3 install -r ./scripts/requirements.txt"
+            sh "sudo pip3 install -r ./scripts/requirements.txt"
             sh "python3 ./scripts/gitea-release.py -release ${params.release}"
          }
       }
@@ -45,7 +45,7 @@ pipeline {
             docker { image 'python:3-alpine'}
          }
          steps {
-            sh "pip3 install -r ./scripts/requirements.txt"
+            sh "sudo pip3 install -r ./scripts/requirements.txt"
             sh "python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
          }
       }
