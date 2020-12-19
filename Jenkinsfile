@@ -33,7 +33,7 @@ pipeline {
       // }
       stage('Create Gitea Release'){
          agent {
-            docker { image 'python:latest'}
+            docker { image 'python:3-alpine'}
          }
          steps {
             sh "pip3 install -r ./scripts/requirements.txt"
@@ -42,7 +42,7 @@ pipeline {
       }
       stage('Upload To S3'){
          agent {
-            docker { image 'python:latest'}
+            docker { image 'python:3-alpine'}
          }
          steps {
             sh "pip3 install -r ./scripts/requirements.txt"
