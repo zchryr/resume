@@ -57,11 +57,13 @@ pipeline {
                args '-u root:root'
             }
          }
-         script {
-            docker.image(registryRepo).inside {
-               sh "pip3 install -r ./scripts/requirements.txt -q"
-               sh "python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
-            }
+         steps {
+            script {
+               docker.image(registryRepo).inside {
+                  sh "pip3 install -r ./scripts/requirements.txt -q"
+                  sh "python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
+               }
+            }  
          }
          // steps {
          //    sh "pip3 install -r ./scripts/requirements.txt -q"
