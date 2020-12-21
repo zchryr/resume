@@ -69,10 +69,10 @@ pipeline {
          deleteDir()
       }
       success {
-         mattermostSend color: 'good', message: "Build Number: $BUILD_NUMBER\n Job Name: $JOB_NAME\n Build URL: $BUILD_URL", text: "Pipeline Passing :)"
+         mattermostSend color: 'good', message: "Build Number: $BUILD_NUMBER\n Job Name: $JOB_NAME\n Build URL: $BUILD_URL", text: "$JOB_NAME Pipeline Passing :)"
       }
       failure {
-         mattermostSend color: 'bad', message: "Build Number: $BUILD_NUMBER\n Job Name: $JOB_NAME\n Build URL: $BUILD_URL", text: "Pipeline Failing :("
+         mattermostSend color: 'bad', message: "Build Number: $BUILD_NUMBER\n Job Name: $JOB_NAME\n Build URL: $BUILD_URL", text: "$JOB_NAME Pipeline Failing :("
       }
    }
 }
