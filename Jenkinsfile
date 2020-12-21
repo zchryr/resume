@@ -44,17 +44,21 @@ pipeline {
             }
          }
          steps {
-            // sh "whoami"
             sh "pip3 install -r ./scripts/requirements.txt"
             sh "python3 ./scripts/gitea-release.py -release ${params.release}"
          }
       }
       stage('Upload To S3'){
-         // agent {
-         //    docker { image 'python:3-alpine'}
-         // }
+         agent {
+            docker { 
+               image registryRepo
+               registryUrl registryAddress
+               registryCredentialsId registryCredential
+               args '-u root:root'
+            }
+         }
          steps {
-            // sh "sudo pip3 install -r ./scripts/requirements.txt"
+            sh "pip3 install -r ./scripts/requirements.txt"
             sh "python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
          }
       }
