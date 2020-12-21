@@ -49,14 +49,14 @@ pipeline {
          }
       }
       stage('Upload To S3'){
-         // agent {
-         //    docker { 
-         //       image registryRepo
-         //       registryUrl registryAddress
-         //       registryCredentialsId registryCredential
-         //       args '-u root:root'
-         //    }
-         // }
+         agent {
+            docker { 
+               image registryRepo
+               registryUrl registryAddress
+               registryCredentialsId registryCredential
+               args "-u root:root -v $WORKSPACE:/app"
+            }
+         }
          steps {
             script {
                docker.image(registryRepo).inside {
