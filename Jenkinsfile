@@ -39,7 +39,7 @@ pipeline {
             docker { 
                image registryRepo
                registryUrl registryAddress
-               registryCredentialId registryCredential
+               registryCredentialsId registryCredential
             }
          }
          steps {
