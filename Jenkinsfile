@@ -40,12 +40,13 @@ pipeline {
                image registryRepo
                registryUrl registryAddress
                registryCredentialsId registryCredential
+               args '-u root:root'
             }
          }
          steps {
-            sh "whoami"
-            // sh "pip3 install -r ./scripts/requirements.txt"
-            // sh "python3 ./scripts/gitea-release.py -release ${params.release}"
+            // sh "whoami"
+            sh "pip3 install -r ./scripts/requirements.txt"
+            sh "python3 ./scripts/gitea-release.py -release ${params.release}"
          }
       }
       stage('Upload To S3'){
