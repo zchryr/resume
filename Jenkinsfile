@@ -54,7 +54,7 @@ pipeline {
                image registryRepo
                registryUrl registryAddress
                registryCredentialsId registryCredential
-               args '-u root:root'
+               args '-u root:root -v ${PWD}:/app'
             }
          }
          steps {
