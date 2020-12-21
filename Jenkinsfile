@@ -18,7 +18,7 @@ pipeline {
       AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
 
       // Docker stuff.
-      registryRepo = 'registry.rohrbach.xyz/python-runtime'
+      registryRepo = 'registry.rohrbach.xyz/python-runtime:latest'
       registryAddress = 'https://registry.rohrbach.xyz'
       registryCredential = 'rohrbach-registry'
    }
@@ -49,14 +49,14 @@ pipeline {
          }
       }
       stage('Upload To S3'){
-         agent {
-            docker { 
-               image registryRepo
-               registryUrl registryAddress
-               registryCredentialsId registryCredential
-               args '-u root:root'
-            }
-         }
+         // agent {
+         //    docker { 
+         //       image registryRepo
+         //       registryUrl registryAddress
+         //       registryCredentialsId registryCredential
+         //       args '-u root:root'
+         //    }
+         // }
          steps {
             script {
                docker.image(registryRepo).inside {
