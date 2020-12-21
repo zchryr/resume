@@ -63,4 +63,16 @@ pipeline {
          }
       }
    }
+
+   post {
+      always {
+         deleteDir()
+      }
+      success {
+         mattermostSend color: 'good', message: "Build Number: $BUILD_NUMBER\n Job Name: $JOB_NAME\n Build URL: $BUILD_URL", text: "Pipeline Passing :)"
+      }
+      failure {
+         mattermostSend color: 'bad', message: "Build Number: $BUILD_NUMBER\n Job Name: $JOB_NAME\n Build URL: $BUILD_URL", text: "Pipeline Failing :("
+      }
+   }
 }
