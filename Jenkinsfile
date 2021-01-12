@@ -50,7 +50,7 @@ pipeline {
          }
       }
       stage('Upload To S3'){
-         when { expression { params.release } }
+         when { expression { params.upload } }
          agent {
             docker { 
                image registryRepo
