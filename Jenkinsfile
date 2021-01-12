@@ -63,7 +63,7 @@ pipeline {
          }
          steps {
             sh "pip3 install -r ./scripts/requirements.txt -q"
-            sh "cd /app && python3 ./scripts/upload-to-s3.py -upload ${params.upload}"
+            sh "cd /app && python3 ./scripts/upload-to-s3.py"
          }
       }
    }
