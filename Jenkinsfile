@@ -1,5 +1,7 @@
 pipeline {
-   agent any
+   agent {
+      label 'docker'
+   }
    
    parameters {
       booleanParam(name: 'release', defaultValue: false, description: 'Create a Gitea repo release.')
