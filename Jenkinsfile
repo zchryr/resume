@@ -44,8 +44,12 @@ pipeline {
             }
          }
          steps {
-            sh "pip3 install -r ./scripts/requirements.txt -q"
-            sh "python3 ./scripts/gitea-release.py -release ${params.release}"
+            script {
+               if (params.release) {
+                  sh "pip3 install -r ./scripts/requirements.txt -q"
+                  sh "python3 ./scripts/gitea-release.py"
+               }
+            }
          }
       }
       stage('Upload To S3'){
