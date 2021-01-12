@@ -35,6 +35,7 @@ pipeline {
          }
       }
       stage('Create Gitea Release'){
+         when { expression { params.release } }
          agent {
             docker { 
                image registryRepo
@@ -44,11 +45,8 @@ pipeline {
             }
          }
          steps {
-            script {
-               if (params.release) {
-                  sh "pip3 install -r ./scripts/requirements.txt -q"
-                  sh "python3 ./scripts/gitea-release.py"
-               }
+               sh "pip3 install -r ./scripts/requirements.txt -q"
+               sh "python3 ./scripts/gitea-release.py"
             }
          }
       }
