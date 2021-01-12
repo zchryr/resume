@@ -3,10 +3,6 @@ import boto3
 import argparse
 from botocore.exceptions import ClientError
 
-parser = argparse.ArgumentParser(description="Arguments.")
-parser.add_argument('-upload', required=True)
-args = parser.parse_args()
-
 def uploadFile(fileName, bucket, objectName=None):
     # If S3 objectName was not specified, use fileName
     if objectName is None:
@@ -23,8 +19,4 @@ def uploadFile(fileName, bucket, objectName=None):
     print("S3 Upload Successful.")
     return True
 
-if args.upload == "true":
-    uploadFile('Zachary-Rohrbach-Resume.pdf', 'rohrbach')
-else:
-    print("File was not uploaded to S3.")
-
+uploadFile('Zachary-Rohrbach-Resume.pdf', 'rohrbach')

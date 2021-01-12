@@ -35,6 +35,7 @@ pipeline {
          }
       }
       stage('Create Gitea Release'){
+         when { expression { params.release } }
          agent {
             docker { 
                image registryRepo
@@ -45,10 +46,11 @@ pipeline {
          }
          steps {
             sh "pip3 install -r ./scripts/requirements.txt -q"
-            sh "python3 ./scripts/gitea-release.py -release ${params.release}"
+            sh "python3 ./scripts/gitea-release.py"
          }
       }
       stage('Upload To S3'){
+         when { expression { params.release } }
          agent {
             docker { 
                image registryRepo

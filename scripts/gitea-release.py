@@ -7,10 +7,6 @@ import os
 true = True
 false = False
 
-parser = argparse.ArgumentParser(description="Arguments.")
-parser.add_argument('-release', required=True)
-args = parser.parse_args()
-
 repoOwner = os.environ.get('REPO_OWNER')
 repoOwner = repoOwner.rstrip("\n")
 
@@ -45,7 +41,4 @@ def createRelease():
         print("Release creation failed.")
         exit(1)
 
-if args.release == "true":
-    createRelease()
-else:
-    print("No Gitea release was created.")
+createRelease()
