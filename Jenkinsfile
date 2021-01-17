@@ -29,7 +29,7 @@ pipeline {
       stage('Build LaTeX Resume') {
          steps {
             agent { 
-               label 'docker' 
+               label ("ubuntu") 
             }
             script {
                docker.image('blang/latex:ctanfull').inside {
@@ -43,7 +43,6 @@ pipeline {
          when { expression { params.release } }
          agent {
             docker { 
-               label 'docker'
                image registryRepo
                registryUrl registryAddress
                registryCredentialsId registryCredential
@@ -59,7 +58,6 @@ pipeline {
          when { expression { params.upload } }
          agent {
             docker {
-               label 'docker'
                image registryRepo
                registryUrl registryAddress
                registryCredentialsId registryCredential
