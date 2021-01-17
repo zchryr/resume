@@ -1,7 +1,5 @@
 pipeline {
-   agent {
-      label 'docker && ubuntu'
-   }
+   agent none
    
    parameters {
       booleanParam(name: 'release', defaultValue: false, description: 'Create a Gitea repo release.')
@@ -26,6 +24,7 @@ pipeline {
    }
 
    stages {
+      agent { label 'docker' }
       stage('Build LaTeX Resume') {
          steps {
             script {
