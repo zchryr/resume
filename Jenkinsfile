@@ -28,6 +28,7 @@ pipeline {
    stages {
       stage('Build LaTeX Resume') {
          steps {
+            agent { label 'docker' }
             script {
                docker.image('blang/latex:ctanfull').inside {
                   sh 'pdflatex main.tex'
@@ -39,6 +40,7 @@ pipeline {
       stage('Create Gitea Release'){
          when { expression { params.release } }
          agent {
+            label 'docker'
             docker { 
                image registryRepo
                registryUrl registryAddress
@@ -54,6 +56,7 @@ pipeline {
       stage('Upload To S3'){
          when { expression { params.upload } }
          agent {
+            label 'docker'
             docker { 
                image registryRepo
                registryUrl registryAddress
