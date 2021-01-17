@@ -39,7 +39,6 @@ pipeline {
       stage('Create Gitea Release'){
          when { expression { params.release } }
          agent {
-            label 'docker'
             docker { 
                image registryRepo
                registryUrl registryAddress
@@ -55,7 +54,6 @@ pipeline {
       stage('Upload To S3'){
          when { expression { params.upload } }
          agent {
-            label 'docker'
             docker {
                image registryRepo
                registryUrl registryAddress
