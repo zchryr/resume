@@ -43,6 +43,7 @@ pipeline {
                image registryRepo
                registryUrl registryAddress
                registryCredentialsId registryCredential
+               label 'docker'
                args '-u root:root'
             }
          }
@@ -58,6 +59,7 @@ pipeline {
                image registryRepo
                registryUrl registryAddress
                registryCredentialsId registryCredential
+               label 'docker'
                args "-u root:root -v $WORKSPACE:/app"
             }
          }
