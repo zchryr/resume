@@ -1,6 +1,6 @@
 pipeline {
    agent {
-      label 'docker'
+      label 'docker && ubuntu'
    }
    
    parameters {
@@ -28,9 +28,6 @@ pipeline {
    stages {
       stage('Build LaTeX Resume') {
          steps {
-            agent { 
-               label ("ubuntu") 
-            }
             script {
                docker.image('blang/latex:ctanfull').inside {
                   sh 'pdflatex main.tex'
