@@ -24,45 +24,49 @@ pipeline {
    }
 
    stages {
-      agent { label 'docker' }
-      stage('Build LaTeX Resume') {
-         steps {
-            script {
-               docker.image('blang/latex:ctanfull').inside {
-                  sh 'pdflatex main.tex'
-                  sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
+      stage('Build & Run In Docker') {
+         agent {
+            label 'docker'
+         }
+         stage('Build LaTeX Resume') {
+            steps {
+               script {
+                  docker.image('blang/latex:ctanfull').inside {
+                     sh 'pdflatex main.tex'
+                     sh 'mv main.pdf Zachary-Rohrbach-Resume.pdf'
+                  }
                }
             }
          }
-      }
-      stage('Create Gitea Release'){
-         when { expression { params.release } }
-         agent {
-            docker { 
-               image registryRepo
-               registryUrl registryAddress
-               registryCredentialsId registryCredential
-               args '-u root:root'
+         stage('Create Gitea Release'){
+            when { expression { params.release } }
+            agent {
+               docker { 
+                  image registryRepo
+                  registryUrl registryAddress
+                  registryCredentialsId registryCredential
+                  args '-u root:root'
+               }
+            }
+            steps {
+               sh "pip3 install -r ./scripts/requirements.txt -q"
+               sh "python3 ./scripts/gitea-release.py"
             }
          }
-         steps {
-            sh "pip3 install -r ./scripts/requirements.txt -q"
-            sh "python3 ./scripts/gitea-release.py"
-         }
-      }
-      stage('Upload To S3'){
-         when { expression { params.upload } }
-         agent {
-            docker {
-               image registryRepo
-               registryUrl registryAddress
-               registryCredentialsId registryCredential
-               args "-u root:root -v $WORKSPACE:/app"
+         stage('Upload To S3'){
+            when { expression { params.upload } }
+            agent {
+               docker {
+                  image registryRepo
+                  registryUrl registryAddress
+                  registryCredentialsId registryCredential
+                  args "-u root:root -v $WORKSPACE:/app"
+               }
             }
-         }
-         steps {
-            sh "pip3 install -r ./scripts/requirements.txt -q"
-            sh "cd /app && python3 ./scripts/upload-to-s3.py"
+            steps {
+               sh "pip3 install -r ./scripts/requirements.txt -q"
+               sh "cd /app && python3 ./scripts/upload-to-s3.py"
+            }
          }
       }
    }
