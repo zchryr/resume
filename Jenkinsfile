@@ -10,7 +10,7 @@ pipeline {
 
    environment {
       // Git stuff.
-      GITEA_API_TOKEN = credentials('gitea-access-key')
+      GITEA_API_TOKEN = credentials('resume-release-token')
       REPO_NAME = sh(script: "basename \$(git remote get-url origin) .git", returnStdout: true)
       REPO_OWNER = sh(script: "git config --get remote.origin.url | cut -d'/' -f4", returnStdout: true)
 
