@@ -1,3 +1,7 @@
+stages:
+  - build
+  - ls
+
 variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -5,21 +9,20 @@ variables:
   BUCKET_NAME: $BUCKET_NAME
 
 build:
+  stage: build
   tags: [ "docker" ]
   image: blang/latex:ctanfull
   script:
     - pdflatex main.tex
     - mv main.pdf Zachary-Rohrbach-Resume.pdf
   artifacts:
-    artifacts:
-      untracked: true
     paths:
       - "Zachary-Rohrbach-Resume.pdf"
+      expire_in: 1 week
 
 ls:
+  stage: ls
   tags: [ "docker" ]
-  dependencies:
-    - build
   script:
     - pwd
     - ls -al
