@@ -1,7 +1,3 @@
-stages:
-  - build
-  - upload
-
 variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -22,4 +18,4 @@ upload:
   tags: [ "docker" ]
   image: amazon/aws-cli
   script:
-    - aws s3 cp ./Zachary-Rohrbach-Resume.pdf s3://BUCKET_NAME
+    - aws s3 cp ./Zachary-Rohrbach-Resume.pdf s3://$BUCKET_NAME
