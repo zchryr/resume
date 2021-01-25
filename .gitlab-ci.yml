@@ -1,7 +1,3 @@
-stages:
-  - build
-  - upload
-
 # variables:
 #   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
 #   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -9,7 +5,6 @@ stages:
 #   S3_BUCKET_NAME: $S3_BUCKET_NAME
 
 build:
-  stage: build
   tags: [ "docker" ]
   image: blang/latex:ctanfull
   script:
@@ -20,10 +15,14 @@ build:
       - "Zachary-Rohrbach-Resume.pdf"
     expire_in: '1 week'
 
-upload:
-  stage: upload
+echo:
   tags: [ "docker" ]
-  image: python:latest
   script:
-    - pip install awscli
-    - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$S3_BUCKET_NAME
+    - echo $S3_BUCKET_NAME
+# upload:
+#   stage: upload
+#   tags: [ "docker" ]
+#   image: python:latest
+#   script:
+#     - pip install awscli
+#     - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$S3_BUCKET_NAME
