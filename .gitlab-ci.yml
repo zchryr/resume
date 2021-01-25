@@ -1,0 +1,28 @@
+stages:
+  - build
+  - upload
+
+variables:
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  AWS_REGION: $AWS_REGION
+
+build:
+  stage: build
+  tags: [ "docker" ]
+  image: blang/latex:ctanfull
+  script:
+    - pdflatex main.tex
+    - mv main.pdf Zachary-Rohrbach-Resume.pdf
+  artifacts:
+    paths:
+      - "Zachary-Rohrbach-Resume.pdf"
+    expire_in: '1 week'
+
+upload:
+  stage: upload
+  tags: [ "docker" ]
+  image: python:latest
+  script:
+    - pip install awscli
+    - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$S3_BUCKET_NAME
