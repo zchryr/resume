@@ -1,6 +1,6 @@
 build:
   tags: [ "docker" ]
-  image: blang/latex:ctangfull
+  image: blang/latex:ctanfull
   script:
     - pdflatex main.tex
     - mv main.pdf Zachary-Rohrbach-Resume.pdf
