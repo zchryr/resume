@@ -1,5 +1,5 @@
 build:
-  tag: [ "docker" ]
+  tags: [ "docker" ]
   image: blang/latex:ctangfull
   script:
     - pdflatex main.tex
