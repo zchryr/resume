@@ -11,11 +11,15 @@ build:
     - pdflatex main.tex
     - mv main.pdf Zachary-Rohrbach-Resume.pdf
   artifacts:
+    artifacts:
+      untracked: true
     paths:
       - "Zachary-Rohrbach-Resume.pdf"
 
 ls:
   tags: [ "docker" ]
+  dependencies:
+    - build
   script:
     - pwd
     - ls -al
