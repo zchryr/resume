@@ -23,6 +23,7 @@ build:
 upload:
   stage: upload
   tags: [ "docker" ]
-  image: amazon/aws-cli
+  image: python:latest
   script:
-    - s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$BUCKET_NAME
+    - pip install awscli
+    - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$BUCKET_NAME
