@@ -1,6 +1,6 @@
 stages:
   - build
-  - ls
+  - upload
 
 variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
@@ -20,15 +20,9 @@ build:
       - "Zachary-Rohrbach-Resume.pdf"
     expire_in: '1 week'
 
-ls:
-  stage: ls
+upload:
+  stage: upload
   tags: [ "docker" ]
+  image: amazon/aws-cli
   script:
-    - pwd
-    - ls -al
-
-# upload:
-#   tags: [ "docker" ]
-#   image: amazon/aws-cli
-#   script:
-#     - aws s3 cp ./Zachary-Rohrbach-Resume.pdf s3://$BUCKET_NAME
+    - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$BUCKET_NAME
