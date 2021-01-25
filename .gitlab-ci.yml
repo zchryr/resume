@@ -18,7 +18,7 @@ build:
   artifacts:
     paths:
       - "Zachary-Rohrbach-Resume.pdf"
-      expire_in: 1 week
+    expire_in: '1 week'
 
 ls:
   stage: ls
