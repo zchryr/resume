@@ -6,7 +6,7 @@ variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
   AWS_REGION: $AWS_REGION
-  BUCKET_NAME: $BUCKET_NAME
+  S3_BUCKET_NAME: $BUCKET_NAME
 
 build:
   stage: build
@@ -26,4 +26,4 @@ upload:
   image: python:latest
   script:
     - pip install awscli
-    - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$BUCKET_NAME
+    - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$S3_BUCKET_NAME
