@@ -1,0 +1,8 @@
+build:
+  image: blang/latex:ctangfull
+  script:
+    - pdflatex main.tex
+    - mv main.pdf Zachary-Rohrbach-Resume.pdf
+  artifacts:
+    paths:
+      - "Zachary-Rohrbach-Resume.pdf"
