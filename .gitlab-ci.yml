@@ -26,3 +26,5 @@ upload:
   script:
     - pip install awscli
     - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$S3_BUCKET_NAME
+  only:
+    - main
