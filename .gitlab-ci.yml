@@ -23,11 +23,12 @@ build:
 clean:
   stage: clean
   tags: [ "shell" ]
-  shell: qpdf resume.pdf Zachary-Rohrbach-Resume.pdf
-  shell: exiftool -all:all= Zachary-Rohrbach-Resume.pdf
+  script: 
+    - qpdf resume.pdf Zachary-Rohrbach-Resume.pdf
+    - exiftool -all:all= Zachary-Rohrbach-Resume.pdf
   artifacts:
     paths:
-      "Zachary-Rohrbach-Resume.pdf"
+      - "Zachary-Rohrbach-Resume.pdf"
 
 upload:
   stage: upload
