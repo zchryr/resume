@@ -1,5 +1,6 @@
 stages:
   - build
+  - clean
   - upload
 
 variables:
@@ -13,11 +14,21 @@ build:
   image: blang/latex:ctanfull
   script:
     - pdflatex main.tex
-    - mv main.pdf Zachary-Rohrbach-Resume.pdf
+    - mv main.pdf resume.pdf
+  artifacts:
+    paths:
+      - "resume.pdf"
+    expire_in: '1 week'
+
+clean:
+  stage: clean
+  tags: [ "shell" ]
+  script: 
+    - qpdf resume.pdf Zachary-Rohrbach-Resume.pdf
+    - exiftool -all:all= Zachary-Rohrbach-Resume.pdf
   artifacts:
     paths:
       - "Zachary-Rohrbach-Resume.pdf"
-    expire_in: '1 week'
 
 upload:
   stage: upload
