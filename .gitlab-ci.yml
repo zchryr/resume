@@ -45,11 +45,11 @@ cloudflare:
   stage: cloudflare
   tags: [ "shell" ]
   script:
-    - >-
-      curl -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" 
-        -H "X-Auth-Email: $CF_EMAIL" 
-        -H "Authorization: Bearer $CF_AUTH" 
-        -H "Content-Type: application/json" 
+      curl \
+        -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" \
+        -H "X-Auth-Email: $CF_EMAIL" \
+        -H "Authorization: Bearer $CF_AUTH" \
+        -H "Content-Type: application/json" \
         --data '{"purge_everything":true}'
   only:
     - main
