@@ -2,7 +2,8 @@ stages:
   - build
   - clean
   - upload
-
+  - cloudflare
+  
 variables:
   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -37,5 +38,18 @@ upload:
   script:
     - pip install awscli
     - aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://$S3_BUCKET_NAME
+  only:
+    - main
+
+cloudflare:
+  stage: cloudflare
+  tags: [ "shell" ]
+  script:
+    - >-
+      curl -X POST "https://api.cloudflare.com/client/v4/zones/$CF_ZONE_ID/purge_cache" 
+        -H "X-Auth-Email: $CF_EMAIL" 
+        -H "Authorization: Bearer $CF_AUTH" 
+        -H "Content-Type: application/json" 
+        --data '{"purge_everything":true}'
   only:
     - main
