@@ -1,0 +1,177 @@
+\documentclass[10pt,a4paper,ragged2e]{rohrbach}
+
+\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+% \ifxetexorluatex
+  % If using xelatex or lualatex:
+  % \setmainfont{Helvetica}
+% \else
+  % If using pdflatex:
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[default]{lato}
+% \fi
+
+% Colors
+\definecolor{LightBlue}{HTML}{5090CE}
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\colorlet{heading}{SlateGrey}
+\colorlet{accent}{LightBlue}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill
+\renewcommand{\itemmarker}{{\small\textbullet}}
+\renewcommand{\ratingmarker}{\faCircle}
+
+\begin{document}
+\name{Zachary Rohrbach}
+\tagline{Security Engineer}
+%% You can add multiple photos on the left or right
+\photoR{2.8cm}{media/headshot-small}
+\personalinfo{%
+  \mailaddress{\href{mailto:zachary@rohrbach.tech}{zachary@rohrbach.tech}}
+  \homepage{\href{https://rohrbach.tech}{rohrbach.tech}}
+  \linkedin{\href{https://www.linkedin.com/in/zchryr/}{linkedin.com/in/zchryr}}
+  \gitlab{\href{https://gitlab.rohrbach.tech/zachary/}{gitlab.rohrbach.tech/zachary}} \\
+  \location{\href{https://goo.gl/maps/bSZmU23okPiGhCCq7}{Cambridge, MA}}
+  %% You MUST add the academicons option to \documentclass
+}
+
+\makecvheader
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.6}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+\cvsection{Experience}
+
+\cvevent{Cloud Security Engineer II}{\homepage{\href{https://quickbase.com/}{Quickbase}}}{09/2020 -- Ongoing}{\href{https://goo.gl/maps/aCPEFcHbfTTZFR7z9}{Cambridge, MA}}
+\begin{itemize}
+  \item Creating \& maintaining security $\rightarrow$ product development\\ vulnerability management program.
+  \item Building SAST, SCA, DAST, and IaC testing in our CI/CD.
+  \item Created processes for external reported vulnerabilities.
+  \item Leading group of security stakeholders within development.
+  \item Engineering \& monitoring cloud / colo infrastructure security.
+  \item Security hackathon for developers with CTF for training.
+\end{itemize}
+
+\divider
+
+\cvevent{Senior DevSecOps Engineer}{\homepage{\href{https://www.netnumber.com/}{NetNumber}}}{05/2020 -- 09/2020}{\href{https://goo.gl/maps/HgQYqRwrYCSFVUn27}{Lowell, MA}}
+\begin{itemize}
+  \item Developed a security testing environment, from the ground up.
+  \item Wrote up list of requirements for SCA and SAST products.
+  \item Implemented DevSecOps products into CI/CD environment.
+  \item Managed vulnerabilities found within code base.
+\end{itemize}
+
+\divider
+
+\cvevent{IoT Cyber Security Engineer}{\homepage{\href{https://www.se.com/us/en/work/campaign/innovation/platform.jsp}{Schneider Electric}}}{05/2018 -- 05/2020}{\href{https://goo.gl/maps/CosB3grMvKof7aRo6}{Andover, MA}}
+\begin{itemize}
+  \item Worked within a SAFe scrum development environment.
+  \item Managed the cyber security process for the development teams.
+  \item Completed penetration tests \& worked on threat models with\\ developers / architects.
+  \item Worked directly with the development teams to help with\\ DevOps work, and integrating security.
+  \item Manipulated existing CI pipelines, and also created CI pipelines to engineer security into DevOps processes.
+\end{itemize}
+
+\divider
+
+\cvevent{Information Security Consultant}{\homepage{\href{https://www.gravoc.com/information-security-services/it-assurance-services/}{GraVoc Associates}}}{05/2017 -- 05/2018}{\href{https://goo.gl/maps/nKNDAKGQhKnpaLcKA}{Peabody, MA}}
+\begin{itemize}
+  \item Independently completed penetration testing, vulnerability \\ assessments, social engineering engagements, and\\ risk assessments. 
+  \item Social engineering engagements involved crafting tailored\\ exploits based on the client’s infrastructure.
+\end{itemize}
+
+\divider
+
+% Switch to the right column
+\switchcolumn
+
+\cvsection{Strengths}
+
+\cvtag{Eye For Detail}
+\cvtag{CI/CD}
+\cvtag{DevOps}\\
+\cvtag{DevSecOps}
+\cvtag{Docker}
+\cvtag{Pentesting}\\
+\cvtag{Security Tooling / Automation}
+\cvtag{Jenkins}
+\cvtag{Threat Modeling}
+\cvtag{IoT}
+\cvtag{Independent}
+\cvtag{Azure / Azure DevOps}
+\cvtag{AWS}\\
+\cvtag{Linux Administration}
+\cvtag{Code Review}
+\cvtag{SAST / SCA / DAST / IaC}
+\cvtag{ISO27001}\\
+\cvtag{Security Operations}
+\cvtag{Scripting}\\
+\cvtag{Vulnerability Program Management}\\
+\cvtag{GitHub Actions}
+\cvtag{GitLab CI/CD}\\
+\cvtag{Vendor Management}
+\cvtag{SDL}
+\cvtag{SSDL}
+\cvtag{Self Motivated}
+
+\divider\smallskip
+
+\cvtag{Python}
+\cvtag{PowerShell}
+\cvtag{Bash}
+\cvtag{C++}
+\cvtag{C\#}
+\cvtag{NodeJS}
+\cvtag{Java}
+
+\cvsection{Security Tools}
+
+\cvtag{BurpSuite}
+\cvtag{Nessus}
+\cvtag{nmap}
+\cvtag{hashcat}
+\cvtag{Airmon Suite}
+\cvtag{Exploit Frameworks}\\
+\cvtag{Metasploit}
+\cvtag{Enumeration Tools}\\
+\cvtag{GitHub Advanced Security}
+\cvtag{Snyk}\\
+\cvtag{WhiteSource}
+\cvtag{Veracode}
+\cvtag{ShiftLeft}
+\cvtag{Prisma Cloud}
+\cvtag{Nexpose}
+
+\cvsection{Achievements}
+
+\cvachievement{\faTrophy}{\homepage{\href{https://hackthebox.eu/profile/3716}{hackthebox.eu}}}{Achieved the rank of "Pro Hacker"}
+
+\divider
+
+\cvachievement{\faTrophy}{Eagle Scout}{Boy Scouts of America - Troop 126 \break(05/2005 -- 06/2013)}
+
+\cvsection{Education}
+
+\cvevent{B.S. -- Computer Science}{\href{https://www.endicott.edu/}{Endicott College}}{August 2013 -- Ongoing}{}
+
+\end{paracol}
+
+\vspace*{\fill}
+Lovingly compiled in \LaTeX \hspace{1mm} \textemdash \hspace{1mm} \mbox{\href{https://gitlab.rohrbach.tech/zachary/resume/}{\gitlab{GitLab Repo}\hspace{-7mm}}} \hspace*{\fill}\includegraphics[scale=0.035]{media/logo}
+
+
+\end{document}

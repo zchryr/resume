@@ -9,19 +9,39 @@ variables:
   AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
   AWS_REGION: $AWS_REGION
 
-build:
+build-cv:
   stage: build
   tags: [ "docker" ]
   image: blang/latex:ctanfull
   script:
-    - pdflatex main.tex
-    - mv main.pdf resume.pdf
+    - pdflatex cv.tex
+  artifacts:
+    paths:
+      - "cv.pdf"
+    expire_in: '1 week'
+
+build-resume:
+  stage: build
+  tags: [ "docker" ]
+  image: blang/latex:ctanfull
+  script:
+    - pdflatex resume.tex
   artifacts:
     paths:
       - "resume.pdf"
     expire_in: '1 week'
 
-clean:
+clean-cv:
+  stage: clean
+  tags: [ "shell" ]
+  script: 
+    - qpdf cv.pdf Zachary-Rohrbach-CV.pdf
+    - exiftool -all:all= Zachary-Rohrbach-CV.pdf
+  artifacts:
+    paths:
+      - "Zachary-Rohrbach-CV.pdf"
+
+clean-resume:
   stage: clean
   tags: [ "shell" ]
   script: 
@@ -31,7 +51,17 @@ clean:
     paths:
       - "Zachary-Rohrbach-Resume.pdf"
 
-upload:
+upload-cv:
+  stage: upload
+  tags: [ "docker" ]
+  image: python:latest
+  script:
+    - pip install awscli
+    - aws s3 cp "Zachary-Rohrbach-CV.pdf" s3://$S3_BUCKET_NAME
+  only:
+    - main
+
+upload-resume:
   stage: upload
   tags: [ "docker" ]
   image: python:latest

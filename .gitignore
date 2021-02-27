@@ -1,9 +1,9 @@
-main.aux
-main.log
-main.out
-main.pdf
-main.fdb_latexmk
-main.fls
-main.synctex.gz
+*.aux
+*.log
+*.out
+*.pdf
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 .vscode
 .DS_Store
