@@ -33,7 +33,11 @@ build-resume:
 
 clean-cv:
   stage: clean
-  tags: [ "shell" ]
+  tags: [ "docker" ]
+  image: ubuntu:latest
+  before_script:
+    - apt update
+    - apt install qpdf exiftool -y
   script: 
     - qpdf cv.pdf Zachary-Rohrbach-CV.pdf
     - exiftool -all:all= Zachary-Rohrbach-CV.pdf
@@ -43,7 +47,13 @@ clean-cv:
 
 clean-resume:
   stage: clean
-  tags: [ "shell" ]
+  image: ubuntu:latest
+  before_script:
+    - apt update
+    - apt install qpdf exiftool -y
+  script: 
+    - qpdf cv.pdf Zachary-Rohrbach-CV.pdf
+    - exiftool -all:all= Zachary-Rohrbach-CV.pdf
   script: 
     - qpdf resume.pdf Zachary-Rohrbach-Resume.pdf
     - exiftool -all:all= Zachary-Rohrbach-Resume.pdf
@@ -73,7 +83,10 @@ upload-resume:
 
 cloudflare:
   stage: cloudflare
-  tags: [ "shell" ]
+  image: ubuntu:latest
+  before_script:
+    - apt update
+    - apt install curl -y
   script:
     - |
       curl \
