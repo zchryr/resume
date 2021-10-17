@@ -1,0 +1,33 @@
+name: Build & Upload
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Compile LaTeX Resume
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "*.tex"
+          glob_root_file: true
+      - 
+        name: Upload Resume Artifact
+        uses: actions/upload-artifact@v2
+        with: 
+          name: resume
+          path: resume.pdf
+      -
+        name: Upload CV Artifact
+        uses: actions/upload-artifact@v2
+        with: 
+          name: CV
+          path: cv.pdf
