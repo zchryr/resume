@@ -19,16 +19,18 @@ jobs:
         with:
           root_file: "*.tex"
           glob_root_file: true
-      - name: ls
-        run: ls -al
-#       - 
-#         name: AWS credentials
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#       -
-#         name: Upload PDFs
-#         run: |
-#           aws s3 cp "Zachary-Rohrbach-CV.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
-#           aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
+      - name: Rename Files
+        run: |
+          mv resume.pdf Zachary-Rohrbach-Resume.pdf
+          mv cv.pdf Zachary-Rohrbach-CV.pdf
+      - 
+        name: AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      -
+        name: Upload PDFs
+        run: |
+          aws s3 cp "Zachary-Rohrbach-CV.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
+          aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
