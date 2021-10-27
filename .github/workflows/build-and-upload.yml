@@ -14,7 +14,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Compile LaTeX Resume
+        name: Compile LaTeX Resume & CV
         uses: xu-cheng/latex-action@v2
         with:
           root_file: "*.tex"
@@ -24,7 +24,7 @@ jobs:
           mv resume.pdf Zachary-Rohrbach-Resume.pdf
           mv cv.pdf Zachary-Rohrbach-CV.pdf
       - 
-        name: Configure AWS Credentials
+        name: Configure AWS Credentials Setup
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
