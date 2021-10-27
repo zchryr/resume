@@ -35,3 +35,11 @@ jobs:
         run: |
           aws s3 cp "Zachary-Rohrbach-CV.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
           aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
+      - name: Cloudflare Cache
+        run: |
+          curl \
+            -X POST "https://api.cloudflare.com/client/v4/zones/{{ secrets.CF_ZONE_ID }}/purge_cache" \
+            -H "X-Auth-Email: ${{ secrets.CF_EMAIL }}" \
+            -H "Authorization: Bearer ${{ secrets.CF_AUTH }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
