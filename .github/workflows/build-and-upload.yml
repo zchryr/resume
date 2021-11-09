@@ -19,7 +19,8 @@ jobs:
         with:
           root_file: "*.tex"
           glob_root_file: true
-      - name: Rename Files
+      - 
+        name: Rename Files
         run: |
           mv resume.pdf Zachary-Rohrbach-Resume.pdf
           mv cv.pdf Zachary-Rohrbach-CV.pdf
@@ -35,7 +36,8 @@ jobs:
         run: |
           aws s3 cp "Zachary-Rohrbach-CV.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
           aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
-      - name: Cloudflare Cache
+      - 
+        name: Cloudflare Cache
         run: |
           curl \
             -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
