@@ -19,26 +19,20 @@ jobs:
           sudo apt install -y fonts-roboto
           cp /usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Regular.ttf .
 
-      - name: ls -al
+      - name: Compile LaTeX Resume
+        uses: xu-cheng/latex-action@2.5.0
+        with:
+          root_file: resume.tex
+          latexmk_use_lualatex: true
+          extra_fonts: |
+            ./Roboto-Regular.ttf
+
+      - name: Rename Files
         run: |
-          ls -al
-          ls | grep *.ttf
+          mv resume.pdf Zachary-Rohrbach-Resume.pdf
 
-
-      # - name: Compile LaTeX Resume
-      #   uses: xu-cheng/latex-action@2.5.0
-      #   with:
-      #     root_file: resume.tex
-      #     latexmk_use_lualatex: true
-      #     extra_fonts: |
-      #       /usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Regular.ttf
-
-      # - name: Rename Files
-      #   run: |
-      #     mv resume.pdf Zachary-Rohrbach-Resume.pdf
-
-      # - name: Archive
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: resume
-      #     path: Zachary-Rohrbach-Resume.pdf
+      - name: Archive
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume
+          path: Zachary-Rohrbach-Resume.pdf
