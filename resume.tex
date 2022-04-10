@@ -86,8 +86,10 @@
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
-  {\today}
-  {Zachary Rohrbach~~~·~~~Resume}
+  {\href{https://github.com/zchryr/resume}{\faGithubSquare\acvHeaderIconSep Resume Repo}}
+  % {\today}
+  {Zachary Rohrbach ~~~·~~~ Lovingly compiled in \LaTeX}
+  % Lovingly compiled in \LaTeX \hspace{1mm} \textemdash \hspace{1mm} \mbox{\href{https://github.com/zchryr/resume}{\github{GitHub Repo}\hspace{-7mm}}} \hspace*{\fill}\includegraphics[scale=0.025]{media/logo}
   {\thepage}
 
 
@@ -97,8 +99,8 @@
 %-------------------------------------------------------------------------------
 \input{resume/about-me}
 \input{resume/experience.tex}
-\input{resume/achievements.tex}
 \pagebreak
+\input{resume/achievements.tex}
 \input{resume/education.tex}
 
 %-------------------------------------------------------------------------------
