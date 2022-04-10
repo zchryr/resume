@@ -17,10 +17,13 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y fonts-roboto
+          cp /usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Regular.ttf .
 
-      - name: Find font
+      - name: ls -al
         run: |
-          find / | grep 'Roboto-Regular.ttf'
+          ls -al
+          ls | grep *.ttf
+
 
       # - name: Compile LaTeX Resume
       #   uses: xu-cheng/latex-action@2.5.0
