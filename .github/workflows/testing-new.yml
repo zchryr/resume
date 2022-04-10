@@ -13,19 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install font
-        run: |
-          sudo apt update
-          sudo apt install -y fonts-roboto
-          cp /usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Regular.ttf .
-
       - name: Compile LaTeX Resume
         uses: xu-cheng/latex-action@2.5.0
         with:
           root_file: resume.tex
           latexmk_use_lualatex: true
           extra_fonts: |
-            ./Roboto-Regular.ttf
+            ./fonts/*.ttf
 
       - name: Rename Files
         run: |
