@@ -1,0 +1,30 @@
+name: Testing new
+
+on:
+  push:
+    branches:
+      - new
+  workflow_dispatch:
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Compile LaTeX Resume & CV
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: resume.tex
+          latexmk_use_lualatex: true
+
+      - name: Rename Files
+        run: |
+          mv resume.pdf Zachary-Rohrbach-Resume.pdf
+
+      - name: Archive
+        uses: actions/upload-artifact@v3
+        with:
+          name: resume
+          path: Zachary-Rohrbach-Resume.pdf
