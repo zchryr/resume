@@ -13,11 +13,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Compile LaTeX Resume & CV
-        uses: xu-cheng/latex-action@v2
+      - name: Install font
+        run: |
+          apt update
+          apt install -y fonts-roboto
+
+      - name: Compile LaTeX Resume
+        uses: xu-cheng/latex-action@v2.5
         with:
           root_file: resume.tex
           latexmk_use_lualatex: true
+          extra_fonts: |
+            /usr/share/fonts/truetype/roboto/unhinted/RobotoTTF/Roboto-Regular.ttf
 
       - name: Rename Files
         run: |
