@@ -1,178 +1,105 @@
-\documentclass[10pt,a4paper,ragged2e]{rohrbach}
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+% Awesome CV LaTeX Template for CV/Resume
+%
+% This template has been downloaded from:
+% https://github.com/posquit0/Awesome-CV
+%
+% Author:
+% Claud D. Park <posquit0.bj@gmail.com>
+% http://www.posquit0.com
+%
+% Template license:
+% CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
 
-\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
 
-% The paracol package lets you typeset columns of text in parallel
-\usepackage{paracol}
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[11pt, a4paper]{awesome-cv}
 
-% Change the font if you want to, depending on whether
-% you're using pdflatex or xelatex/lualatex
-% \ifxetexorluatex
-  % If using xelatex or lualatex:
-  % \setmainfont{Helvetica}
-% \else
-  % If using pdflatex:
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[default]{lato}
-% \fi
+% Configure page margins with geometry
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
 
-% Colors
-\definecolor{LightBlue}{HTML}{5090CE}
-\definecolor{SlateGrey}{HTML}{2E2E2E}
-\definecolor{LightGrey}{HTML}{666666}
-\colorlet{heading}{SlateGrey}
-\colorlet{accent}{LightBlue}
-\colorlet{emphasis}{SlateGrey}
-\colorlet{body}{LightGrey}
+% Specify the location of the included fonts
+\fontdir[fonts/]
 
-% Change the bullets for itemize and rating marker
-% for \cvskill
-\renewcommand{\itemmarker}{{\small\textbullet}}
-\renewcommand{\ratingmarker}{\faCircle}
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-arcblue}
+% Uncomment if you would like to specify your own color
+% \definecolor{awesome}{HTML}{CA63A8}
 
+% Colors for text
+% Uncomment if you would like to specify your own color
+% \definecolor{darktext}{HTML}{414141}
+% \definecolor{text}{HTML}{333333}
+% \definecolor{graytext}{HTML}{5D5D5D}
+% \definecolor{lighttext}{HTML}{999999}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+% \photo[rectangle,edge,right]{./examples/profile}
+\name{Zachary}{Rohrbach}
+\position{Security Engineer{\enskip\cdotp\enskip}DevSecOps{\enskip\cdotp\enskip}AppSec{\enskip\cdotp\enskip}CloudSec}
+\address{Greater Boston Area, Massachusetts}
+
+\mobile{(+1) 508-954-3696}
+\email{zachary@rohrbach.tech}
+\homepage{rohrbach.tech}
+\github{zchryr}
+\linkedin{zchryr}
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \twitter{@twit}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \medium{madium-id}
+% \googlescholar{googlescholar-id}{name-to-display}
+%% \firstname and \lastname will be used
+% \googlescholar{googlescholar-id}{}
+% \extrainfo{extra informations}
+
+% \quote{``Be the change that you want to see in the world."}
+
+
+%-------------------------------------------------------------------------------
 \begin{document}
-\name{Zachary Rohrbach}
-\tagline{Security Engineer}
-%% You can add multiple photos on the left or right
-\photoR{2.8cm}{media/headshot-small}
-\personalinfo{%
-  \mailaddress{\href{mailto:zachary@rohrbach.tech}{zachary@rohrbach.tech}}
-  \homepage{\href{https://rohrbach.tech}{rohrbach.tech}}
-  \linkedin{\href{https://www.linkedin.com/in/zchryr/}{in/zchryr}}
-  \github{\href{https://github.com/zchryr/resume}{zchryr/resume}} \\
-  \location{\href{https://goo.gl/maps/bSZmU23okPiGhCCq7}{Waltham, MA}}
-  %% You MUST add the academicons option to \documentclass
-}
 
-\makecvheader
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[C]
 
-%% Set the left/right column width ratio to 6:4.
-\columnratio{0.6}
-
-% Start a 2-column paracol. Both the left and right columns will automatically
-% break across pages if things get too long.
-\begin{paracol}{2}
-\cvsection{Experience}
-
-\cvevent{Senior Security Engineer}{\homepage{\href{https://quickbase.com/}{Quickbase}}}{09/2020 -- Ongoing}{\href{https://goo.gl/maps/aCPEFcHbfTTZFR7z9}{Cambridge, MA}}
-\begin{itemize}
-  \item Creating \& maintaining security $\rightarrow$ product development\\ vulnerability management program.
-  \item Building SAST, SCA, DAST, and IaC testing in our CI/CD.
-  \item Created processes for external reported vulnerabilities.
-  \item Engineering \& monitoring cloud / colo infrastructure security.
-  \item Security hackathon for developers with CTF for training.
-  \item Managed annual pentest. Configured access, managed \\communication with SRE, triaged \& reproduced \\vulnerabilities found during testing, created stories.
-  \item Regularly generate metrics for quarterly risk reporting to the \\executive leadership team.
-  \item Project management for cross-team security initiatives\\ throughout the company. 
-  \item Project managed and individually contributed towards\\ deployment of cloud security operations vendor for AWS \& GCP.
-  \item Contributed towards evidence gathering for SOC audit.
-  \item Key contributor towards incident response team.
-  \item Provided technical leadership \& guidance regarding security.
-\end{itemize}
-
-\divider
-
-\cvevent{Senior DevSecOps Engineer}{\homepage{\href{https://www.netnumber.com/}{NetNumber}}}{05/2020 -- 09/2020}{\href{https://goo.gl/maps/HgQYqRwrYCSFVUn27}{Lowell, MA}}
-\begin{itemize}
-  \item Developed a security testing environment, from the ground up.
-  \item Wrote up list of requirements for SCA and SAST products.
-  \item Implemented DevSecOps products into CI/CD environment.
-\end{itemize}
-
-\divider
-
-\cvevent{IoT Cyber Security Engineer}{\homepage{\href{https://www.se.com/us/en/work/campaign/innovation/platform.jsp}{Schneider Electric}}}{05/2018 -- 05/2020}{\href{https://goo.gl/maps/CosB3grMvKof7aRo6}{Andover, MA}}
-\begin{itemize}
-  \item Managed the cyber security process for the development teams.
-  \item Completed penetration tests \& developed threat models.
-  \item Manipulated CI pipelines to engineer security into DevOps.
-\end{itemize}
-
-\divider
-
-\cvevent{Information Security Consultant}{\homepage{\href{https://www.gravoc.com/information-security-services/it-assurance-services/}{GraVoc Associates}}}{05/2017 -- 05/2018}{\href{https://goo.gl/maps/nKNDAKGQhKnpaLcKA}{Peabody, MA}}
-\begin{itemize}
-  \item Pentesting, social engineering, and vulnerability assessments.
-\end{itemize}
-
-% Switch to the right column
-\switchcolumn
-
-\cvsection{Strengths}
-
-\cvtag{Eye For Detail}
-\cvtag{CI/CD}
-\cvtag{DevOps}\\
-\cvtag{DevSecOps}
-\cvtag{Docker}
-\cvtag{Pentesting}\\
-\cvtag{Security Tooling / Automation}
-\cvtag{Jenkins}
-\cvtag{Threat Modeling}
-\cvtag{IoT}
-\cvtag{Independent}
-\cvtag{Azure / Azure DevOps}
-\cvtag{AWS}\\
-\cvtag{Linux Administration}
-\cvtag{Code Review}
-\cvtag{SAST / SCA / DAST / IaC}
-\cvtag{ISO27001}\\
-\cvtag{Security Operations}
-\cvtag{Scripting}\\
-\cvtag{Vulnerability Program Management}\\
-\cvtag{GitHub Actions}
-\cvtag{GitLab CI/CD}\\
-\cvtag{Vendor Management}
-\cvtag{SDL}
-\cvtag{SSDL}
-\cvtag{Self Motivated}
-\cvtag{SAFe}
-
-\divider\smallskip
-
-\cvtag{Python}
-\cvtag{PowerShell}
-\cvtag{Bash}
-\cvtag{C++}
-\cvtag{C\#}
-\cvtag{NodeJS}
-\cvtag{Java}
-
-\cvsection{Security Tools}
-
-\cvtag{BurpSuite}
-\cvtag{Nessus}
-\cvtag{nmap}
-\cvtag{hashcat}
-\cvtag{Airmon Suite}
-\cvtag{Exploit Frameworks}\\
-\cvtag{Metasploit}
-\cvtag{Enumeration Tools}\\
-\cvtag{GitHub Advanced Security}
-\cvtag{Snyk}\\
-\cvtag{WhiteSource}
-\cvtag{Veracode}
-\cvtag{PrismaCloud}
-\cvtag{Lacework}
-\cvtag{Nexpose}
-
-\cvsection{Achievements}
-
-\cvachievement{\faTrophy}{\homepage{\href{https://hackthebox.eu/profile/3716}{hackthebox.eu}}}{Achieved the rank of "Pro Hacker"}
-
-\divider
-
-\cvachievement{\faTrophy}{Eagle Scout}{Boy Scouts of America - Troop 126 \break(05/2005 -- 06/2013)}
-
-\cvsection{Education}
-
-\cvevent{B.S. -- Computer Science}{\href{https://www.endicott.edu/}{Endicott College}}{August 2013 -- Ongoing}{}
-
-\end{paracol}
-
-\vspace*{\fill}
-Lovingly compiled in \LaTeX \hspace{1mm} \textemdash \hspace{1mm} \mbox{\href{https://github.com/zchryr/resume}{\github{GitHub Repo}\hspace{-7mm}}} \hspace*{\fill}\includegraphics[scale=0.025]{media/logo}
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+  {\today}
+  {Zachary Rohrbach~~~·~~~Resume}
+  {\thepage}
 
 
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%-------------------------------------------------------------------------------
+\input{resume/about-me}
+\input{resume/experience.tex}
+\input{resume/achievements.tex}
+\pagebreak
+\input{resume/education.tex}
+
+%-------------------------------------------------------------------------------
 \end{document}

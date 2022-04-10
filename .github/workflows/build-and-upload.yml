@@ -5,39 +5,38 @@ on:
     branches:
       - main
   workflow_dispatch:
-  
+
 jobs:
   job:
     runs-on: ubuntu-latest
     steps:
-      - 
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Compile LaTeX Resume & CV
-        uses: xu-cheng/latex-action@v2
+
+      - name: Compile LaTeX Resume
+        uses: xu-cheng/latex-action@2.5.0
         with:
-          root_file: "*.tex"
-          glob_root_file: true
-      - 
-        name: Rename Files
+          root_file: resume.tex
+          latexmk_use_lualatex: true
+          extra_fonts: |
+            ./fonts/*.ttf
+
+      - name: Rename PDF
         run: |
           mv resume.pdf Zachary-Rohrbach-Resume.pdf
-          mv cv.pdf Zachary-Rohrbach-CV.pdf
-      - 
-        name: Configure AWS Credentials Setup
+
+      - name: Configure AWS Credentials Setup
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-region: ${{ secrets.AWS_REGION }}
-      -
-        name: Upload PDFs
+
+      - name: Upload PDF
         run: |
-          aws s3 cp "Zachary-Rohrbach-CV.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
           aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
-      - 
-        name: Cloudflare Cache
+
+      - name: Cloudflare Cache
         run: |
           curl \
             -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
