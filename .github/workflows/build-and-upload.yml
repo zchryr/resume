@@ -13,19 +13,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Compile LaTeX Resume
-        uses: xu-cheng/latex-action@2.5.0
-        with:
-          root_file: resume.tex
-          latexmk_use_lualatex: true
-          extra_fonts: |
-            ./fonts/*.ttf
+#       - name: Compile LaTeX Resume
+#         uses: xu-cheng/latex-action@2.5.0
+#         with:
+#           root_file: resume.tex
+#           latexmk_use_lualatex: true
+#           extra_fonts: |
+#             ./fonts/*.ttf
 
-      - name: Rename PDF
+#       - name: Rename PDF
+#         run: |
+#           mv resume.pdf Zachary-Rohrbach-Resume.pdf
+
+      - name: Testing
         run: |
-          mv resume.pdf Zachary-Rohrbach-Resume.pdf
+          touch Zachary-Rohrbach-Resume.pdf
           
-      - name: Set up S3cmd cli tool
+      - name: Set Up S3cmd CLI
         uses: s3-actions/s3cmd@v1.2.0
         with:
           provider: 'digitalocean'
@@ -33,15 +37,15 @@ jobs:
           access_key: ${{ secrets.ACCESS_KEY }}
           secret_key: ${{ secrets.SECRET_KEY }}
 
-      - name: Interact with object storage
+      - name: Upload PDF To Bucket
         run: |
-          s3cmd put "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.BUCKET_NAME }}
+          s3cmd put Zachary-Rohrbach-Resume.pdf s3://${{ secrets.BUCKET_NAME }}
 
-      - name: Cloudflare Cache
-        run: |
-          curl \
-            -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
-            -H "X-Auth-Email: ${{ secrets.CF_EMAIL }}" \
-            -H "Authorization: Bearer ${{ secrets.CF_AUTH }}" \
-            -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}'
+#       - name: Cloudflare Cache
+#         run: |
+#           curl \
+#             -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
+#             -H "X-Auth-Email: ${{ secrets.CF_EMAIL }}" \
+#             -H "Authorization: Bearer ${{ secrets.CF_AUTH }}" \
+#             -H "Content-Type: application/json" \
+#             --data '{"purge_everything":true}'
