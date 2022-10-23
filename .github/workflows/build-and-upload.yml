@@ -28,7 +28,7 @@ jobs:
       - name: Set up S3cmd cli tool
         uses: s3-actions/s3cmd@v1.2.0
         with:
-          provider: DigitalOcean
+          provider: 'digitalocean'
           region: 'US'
           access_key: ${{ secrets.ACCESS_KEY }}
           secret_key: ${{ secrets.SECRET_KEY }}
