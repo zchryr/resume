@@ -7,7 +7,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  job:
+  build-and-upload:
+    name: Build & Upload Resume
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,7 +40,9 @@ jobs:
 
       - name: Upload PDF To Bucket
         run: |
-          s3cmd put Zachary-Rohrbach-Resume.pdf s3://${{ secrets.BUCKET_NAME }}
+          s3cmd ls ${{ secrets.BUCKET_NAME }}
+
+# s3cmd put Zachary-Rohrbach-Resume.pdf s3://${{ secrets.BUCKET_NAME }}
 
 #       - name: Cloudflare Cache
 #         run: |
