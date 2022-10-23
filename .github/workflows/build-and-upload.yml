@@ -33,8 +33,8 @@ jobs:
       - name: Set Up S3cmd CLI
         uses: s3-actions/s3cmd@v1.2.0
         with:
-          provider: 'digitalocean'
-          region: 'us'
+          provider: digitalocean
+          region: NYC3
           access_key: ${{ secrets.ACCESS_KEY }}
           secret_key: ${{ secrets.SECRET_KEY }}
 
