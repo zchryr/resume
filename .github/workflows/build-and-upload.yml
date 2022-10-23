@@ -24,17 +24,18 @@ jobs:
       - name: Rename PDF
         run: |
           mv resume.pdf Zachary-Rohrbach-Resume.pdf
-
-      - name: Configure AWS Credentials Setup
-        uses: aws-actions/configure-aws-credentials@v1
+          
+      - name: Set up S3cmd cli tool
+        uses: s3-actions/s3cmd@v1.2.0
         with:
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-region: ${{ secrets.AWS_REGION }}
+          provider: DigitalOcean
+          region: 'US'
+          access_key: ${{ secrets.ACCESS_KEY }}
+          secret_key: ${{ secrets.SECRET_KEY }}
 
-      - name: Upload PDF
+      - name: Interact with object storage
         run: |
-          aws s3 cp "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.AWS_S3_BUCKET_NAME }}
+          s3cmd put "Zachary-Rohrbach-Resume.pdf" s3://${{ secrets.BUCKET_NAME }}
 
       - name: Cloudflare Cache
         run: |
