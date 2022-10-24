@@ -36,7 +36,7 @@ jobs:
 
       - name: Upload PDF To Bucket
         run: |
-          s3cmd put Zachary-Rohrbach-Resume.pdf s3://${{ secrets.BUCKET_NAME }}
+          s3cmd put -P Zachary-Rohrbach-Resume.pdf s3://${{ secrets.BUCKET_NAME }}
 
       - name: Cloudflare Cache
         run: |
