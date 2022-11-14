@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-upload-delete:
-    name: Build & Upload Resume
+    name: Build, Upload, & Delete
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
