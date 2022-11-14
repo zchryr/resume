@@ -1,4 +1,4 @@
-name: Build & Upload
+name: CD - Build & Upload
 
 on:
   push:
