@@ -23,7 +23,8 @@ jobs:
 
       - name: Rename PDF
         run: |
-          mv resume.pdf test.pdf
+          cp resume.pdf ci-test.pdf
+          mv resume.pdf Zachary-Rohrbach-Resume.pdf
           
       - name: Set Up S3cmd CLI
         uses: s3-actions/s3cmd@v1.3.0
@@ -35,8 +36,14 @@ jobs:
 
       - name: Upload PDF To Bucket
         run: |
-          s3cmd put -P test.pdf s3://${{ secrets.BUCKET_NAME }}
+          s3cmd put -P ci-test.pdf s3://${{ secrets.BUCKET_NAME }}
           
       - name: Delete PDF
         run: |
-          s3cmd del s3://${{ secrets.BUCKET_NAME }}/test.pdf
+          s3cmd del s3://${{ secrets.BUCKET_NAME }}/ci-test.pdf
+          
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: resume
+          path: Zachary-Rohrbach-Resume.pdf
