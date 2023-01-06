@@ -44,7 +44,7 @@ jobs:
           s3cmd del s3://${{ secrets.BUCKET_NAME }}/ci-test.pdf
           
       - name: Upload PDF Artifact
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: resume
           path: Zachary-Rohrbach-Resume.pdf
