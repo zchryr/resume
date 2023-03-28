@@ -62,7 +62,7 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", redirect)
 
-	err := http.ListenAndServe(":1337", nil)
+	err := http.ListenAndServe(":80", nil)
 
 	if err != nil {
 		log.Fatal(err)
