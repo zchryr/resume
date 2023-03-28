@@ -12,7 +12,11 @@ WORKDIR $GOPATH/src/mypackage/myapp/
 
 COPY . .
 
-RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/main
+# Install dependencies.
+RUN go mod download
+
+# Build go binary.
+RUN GOOS=linux go build -o /go/bin/main
 
 ############################
 # STEP 2 build a small image
