@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -16,12 +17,12 @@ type request struct {
 	UserAgent string
 }
 
-// Sends request info a Tines webhook.
-func tines(r request) {
+// Sends request info a webhook.
+func webhook(r request) {
 	// Convert struct to JSON.
 	json, _ := json.Marshal(r)
 
-	request, _ := http.NewRequest("POST", "https://autumn-silence-4783.tines.com/webhook/220d2ef276eddb56edf8af42301cc72b/747a971570b79acdf6cd47829113b7dc", bytes.NewBuffer(json))
+	request, _ := http.NewRequest("POST", os.Getenv("WEBHOOK"), bytes.NewBuffer(json))
 	request.Header.Set("Content-Type", "application/json; charset=UTF-8")
 
 	// HTTP client.
@@ -52,7 +53,7 @@ func redirect(w http.ResponseWriter, r *http.Request) {
 		UserAgent: r.UserAgent(),
 	}
 
-	tines(request)
+	webhook(request)
 
 	http.Redirect(w, r, "https://cdn.rohrbach.tech/Zachary-Rohrbach-Resume.pdf", http.StatusTemporaryRedirect)
 }
