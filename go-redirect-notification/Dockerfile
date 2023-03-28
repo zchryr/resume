@@ -12,9 +12,6 @@ WORKDIR $GOPATH/src/mypackage/myapp/
 
 COPY . .
 
-# Fetch dependencies. Using go get.
-RUN go get -d -v
-
 RUN GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/main
 
 ############################
