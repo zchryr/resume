@@ -13,36 +13,37 @@
   \cventry
     {Staff Security Engineer} % Job title
     {Quickbase} % Organization
-    {Boston, Massachusetts} % Location
+    {Remote} % Location
+    % {Boston, Massachusetts} % Location
     {Sept. 2020 - Present} % Date(s)
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
         \item {
-          Deployed and configured GitHub CodeQL, Snyk, and Lacework IaC using GitHub Actions \& Jenkins. These tools supported the scanning of C++, C\#, Python, Java, and JavaScript. Lacework IaC was used to scan existing CloudFormation files in GitHub as well as net new CloudFormation resources on Pull Requests.
+          Deployed and configured GitHub CodeQL, Snyk, and Lacework Infrastructure as Code (IaC) using GitHub Actions \& Jenkins. These tools supported the scanning of C++, C\#, Python, Java, and JavaScript repositories.
         }
         \item {
-          Built SOAR automation to enrich alerts before being actioned by the Security \& Compliance team.
+          Built Tines SOAR automation to enrich alerts from Lacework with contextual and additional information. Based on this information Slack messages are sent, Jira tickets are created, and customized alerts are generated.
         }
         \item {
-          Configured Artifactory to automatically scan new Docker images with Lacework.
+          Architected and implemented Tines automation to generate targeted Jira issues for vulnerabilities identified by Lacework and Snyk, resulting in an 89\% reduction in container vulnerabilities through remediation efforts.
         }
         \item {
-          Used Tines to automatically open Jira issues for vulnerabilities detected by GitHub CodeQL, Snyk, and Lacework. This effort was critical to escalating vulnerabilities to development teams using a familiar process.
+          Led project to deploy Lacework for public cloud providers. Integrated Lacework into logs for user behavioral analytics. Deployed Lacework agents with IaC to monitor all hosts \& containers for vulnerabilities, malware, and user behavioral\\ anomalies. Deployed Lacework agentless scanning to gain comprehensive visibility into vulnerabilities on workloads.
         }
         \item {
-          Served as the tech lead and project lead to deploy Lacework for AWS \& GCP. Integrated Lacework into AWS CloudTrail and GCP Audit Logs for user behavioral analytics. Deployed Lacework agents to AWS ECS with CloudFormation to monitor all hosts \& containers for vulnerabilities, malware, and user behavioral anomalies.
+          Directed annual pentests utilizing an external pentesting firm. Provisioned testing environments, configured access, managed communication with SRE, and triaged/reproduced vulnerabilities. Created tickets to fix all findings from the report and worked with development teams to identify false positives.
         }
         \item {
-          Managed annual pentest. Configured access for external pentesting firm, managed communication with SRE, triaged \& reproduced vulnerabilities. Created remediation stories for development teams.
+          Modernized responsible disclosure program by working with internal stakeholders to build a standardized and scalable responsible disclosure program. This program is primarily targeted at the intake of customer reported security findings. Standardizing this process resulted in faster response times for customers, better lines of communication internally, and higher quality analysis of reported findings.
         }
         \item {
-          Built \& continuously maintained vulnerability management program for product development organization. Created process and workflow to intake vulnerabilities reported by security researchers \& existing customers.
+          Assumed the role of security engineering Team Lead, overseeing and mentoring two junior security engineers. Conducted training sessions, assigned daily tasks, and provided guidance to foster their professional growth within the security domain.
         }
         \item {
-          Gathered security metrics for quarterly ELT risk review meetings.
+          Wrote automation to scan new Docker images with Lacework in both Artifactory and Jenkins pipelines, shifting left Docker image scanning and allowing Jenkins pipelines to block new Docker images that violate policies.
         }
         \item {
-          Contributed towards SOC audit, review of control owners, and evidence gathering.
+          Gathered security metrics for quarterly Executive Leadership Team (ELT) risk review meetings.
         }
       \end{cvitems}
     }
@@ -51,15 +52,16 @@
   \cventry
     {Senior DevSecOps Engineer} % Job title
     {NetNumber} % Organization
-    {Lowell, Massachusetts} % Location
+    {Remote} % Location
+    % {Lowell, Massachusetts} % Location
     {May 2020 - Sept. 2020} % Date(s)
     {
       \begin{cvitems} % Description(s) of tasks/responsibilities
         \item {
-          Developed a thorough understanding of the development environment, product stack, \& code base, and identified security needs.
+          Quickly developed a thorough understanding of the engineering environment, product stack, code base, and identified security needs.
         }
         \item {
-          Integrated DevSecOps tools into Jenkins CI/CD pipelines.
+          Integrated SonarQube \& Snyk into Jenkins CI/CD pipelines.
         }
         \item {
           Managed vulnerabilities found using DevSecOps tools and worked with development teams to remediate them.
@@ -85,10 +87,7 @@
           Managed cyber security processes for four development teams.
         }
         \item {
-          Wrote CI/CD pipelines to automate SAST scanning.
-        }
-        \item {
-          Created a CI/CD pipeline to deploy Azure infrastructure, deploy several projects, run security testing, and cleanly tear down infrastructure.
+          Wrote CI/CD pipelines to complete SAST scanning.
         }
       \end{cvitems}
     }
@@ -114,21 +113,21 @@
     }
 
 %---------------------------------------------------------
-  \cventry
-    {Cyber Security Intern} % Job title
-    {Schneider Electric} % Organization
-    {Foxborough, Massachusetts} % Location
-    {Jan. 2014 - Aug. 2016} % Date(s)
-    {
-      \begin{cvitems} % Description(s) of tasks/responsibilities
-        \item {
-          Completed development tasks including embedded software development and python scripting.
-        }
-        \item {
-          Built a virutalized cyber security lab to conduct assessments.
-        }
-      \end{cvitems}
-    }
+  % \cventry
+  %   {Cyber Security Intern} % Job title
+  %   {Schneider Electric} % Organization
+  %   {Foxborough, Massachusetts} % Location
+  %   {Jan. 2014 - Aug. 2016} % Date(s)
+  %   {
+  %     \begin{cvitems} % Description(s) of tasks/responsibilities
+  %       \item {
+  %         Completed development tasks including embedded software development and python scripting.
+  %       }
+  %       \item {
+  %         Built a virutalized cyber security lab to conduct assessments.
+  %       }
+  %     \end{cvitems}
+  %   }
 
 %---------------------------------------------------------
 \end{cventries}
