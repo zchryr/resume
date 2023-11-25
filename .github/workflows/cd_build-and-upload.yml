@@ -25,7 +25,7 @@ jobs:
       - name: Rename PDF
         run: |
           mv resume.pdf Zachary-Rohrbach-Resume.pdf
-          
+
       - name: Set Up S3cmd CLI
         uses: s3-actions/s3cmd@v1.5.0
         with:
@@ -55,12 +55,8 @@ jobs:
 
     steps:
       - name: Build Notification
-        uses: zchryr/build-notifier-action@v1.0.11
+        uses: zchryr/notifier@main
         with:
-          body: ${{ toJSON(needs) }}
-          url: ${{ secrets.TINES_WEBHOOK }}
-          response_code: 201
-          repo: ${{ github.repository }}
-          workflow: $WORKFLOW
-        env:
-          WORKFLOW: ${{ github.workflow }}
+          input: ${{ toJSON(needs) }}
+          url: '${{ secrets.TINES_WEBHOOK }}'
+          response_code: '201'
