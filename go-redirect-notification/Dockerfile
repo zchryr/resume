@@ -29,4 +29,7 @@ COPY --from=builder /go/bin/main /go/bin/main
 # Copy trusted certs.
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
+# Set non-root user.
+USER 1000
+
 ENTRYPOINT ["/go/bin/main"]
