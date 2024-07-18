@@ -1,0 +1,61 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    name: Build & Upload Resume
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/moderncv/debian-texlive-docker:main
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX Resume
+        run: |
+          lualatex resume.tex
+
+      - name: Rename PDF
+        run: |
+          mv resume.pdf Zachary-Rohrbach-Resume.pdf
+
+      - name: Set Up S3cmd CLI
+        uses: s3-actions/s3cmd@v1.6.1
+        with:
+          provider: digitalocean
+          region: NYC3
+          access_key: ${{ secrets.ACCESS_KEY }}
+          secret_key: ${{ secrets.SECRET_KEY }}
+
+      - name: Upload PDF To Bucket
+        run: |
+          s3cmd put -P Zachary-Rohrbach-Resume.pdf s3://${{ secrets.BUCKET_NAME }}
+
+      - name: Cloudflare Cache
+        run: |
+          curl \
+            -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CF_ZONE_ID }}/purge_cache" \
+            -H "X-Auth-Email: ${{ secrets.CF_EMAIL }}" \
+            -H "Authorization: Bearer ${{ secrets.CF_AUTH }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}'
+
+  notification:
+    needs: [build-and-upload]
+    if: always()
+    name: Send Build Notification
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build Notification
+        uses: zchryr/notifier@main
+        with:
+          input: ${{ toJSON(needs) }}
+          url: '${{ secrets.TINES_WEBHOOK }}'
+          response_code: '201'
