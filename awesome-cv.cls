@@ -648,7 +648,8 @@
   \vspace{-2.0mm}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{57pt} L{\textwidth - 65pt}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{65pt} L{\textwidth - 68pt}}
+    % \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} R{57pt} L{\textwidth - 65pt}}
 }{%
     \end{tabular*}
 }
