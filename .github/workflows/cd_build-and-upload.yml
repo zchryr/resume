@@ -18,7 +18,7 @@ jobs:
         uses: xu-cheng/latex-action@3.2.0
         with:
           root_file: resume.tex
-          latexmk_use_lualatex: true
+          # latexmk_use_lualatex: true
           extra_fonts: |
             ./fonts/*.ttf
 
