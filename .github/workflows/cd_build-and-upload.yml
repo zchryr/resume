@@ -28,7 +28,7 @@ jobs:
           mv resume.pdf Zachary-Rohrbach-Resume.pdf
 
       - name: Set Up S3cmd CLI
-        uses: s3-actions/s3cmd@v1.10.0
+        uses: s3-actions/s3cmd@v1.10.1
         with:
           provider: digitalocean
           region: NYC3
