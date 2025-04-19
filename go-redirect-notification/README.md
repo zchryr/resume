@@ -1,1 +1,0 @@
-# GoLang Redirect Notification
